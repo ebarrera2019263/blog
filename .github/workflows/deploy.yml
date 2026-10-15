@@ -13,6 +13,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      BASE_PATH: /blog
+      SITE: https://ebarrera2019263.github.io
     steps:
       - uses: actions/checkout@v4
       - uses: withastro/action@v3

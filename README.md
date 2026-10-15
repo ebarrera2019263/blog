@@ -24,7 +24,17 @@ npm run dev        # http://localhost:4321/blog/
 
 Para agregar una entrada nueva, copia un `.md` de `src/content/posts/`, cambia el nombre del archivo (será la URL) y edita el encabezado. Las entradas se ordenan por `fecha:`, de la más reciente a la más antigua, y la que tiene `fijada: true` aparece primero.
 
-## Publicar en GitHub Pages
+## Publicar en Cloudflare Pages (enlace principal)
+
+El blog está en **https://monedas-digitales-umg.pages.dev**. Para publicar cambios:
+
+```sh
+npm run deploy
+```
+
+La primera vez en otra computadora hay que iniciar sesión con `npx wrangler login`.
+
+## Publicar en GitHub Pages (respaldo)
 
 1. Crea un repositorio en GitHub llamado `blog`. Si usas otro nombre, cámbialo también en `base` de `astro.config.mjs` y en las rutas de imágenes.
 2. En `astro.config.mjs`, cambia `ebarrera2019263` por tu usuario de GitHub.

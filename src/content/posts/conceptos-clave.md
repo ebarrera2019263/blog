@@ -24,7 +24,7 @@ En la entrada anterior vimos qué son las criptomonedas. Ahora explico los conce
 
 Es un **libro mayor compartido** que registra las transacciones en bloques ordenados, de modo que el historial es difícil de alterar (Sánchez, 2022). Cada bloque guarda una huella digital (*hash*) del bloque anterior: si alguien modifica un registro antiguo, la cadena deja de coincidir.
 
-![Diagrama de tres bloques enlazados, cada uno con el hash del bloque anterior](/blog/img/blockchain.svg)
+![Diagrama de tres bloques enlazados, cada uno con el hash del bloque anterior](/img/blockchain.svg)
 *Figura 1. Cada bloque guarda el hash del anterior. Elaboración propia con base en Sánchez (2022).*
 
 ## Descentralización

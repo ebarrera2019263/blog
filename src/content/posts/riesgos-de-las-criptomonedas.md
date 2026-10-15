@@ -30,7 +30,7 @@ En las entradas anteriores vimos qué son las criptomonedas, sus tipos y cómo l
 - **Ciberataques a plataformas:** los exchanges (casas de cambio digitales) concentran fondos de miles de usuarios y son blanco de hackers. En 2014, el exchange japonés **Mt. Gox** quebró tras perder cientos de miles de bitcoins.
 - **Quiebras y fraudes:** en 2022 colapsó **FTX**, uno de los exchanges más grandes del mundo, y millones de usuarios perdieron acceso a sus fondos.
 - **Estafas en línea:** *phishing* (páginas falsas que roban claves), esquemas Ponzi y falsas "inversiones garantizadas".
-- **Pérdida irreversible de la clave privada:** como vimos en los [conceptos clave](/blog/conceptos-clave), quien la pierde pierde sus fondos para siempre.
+- **Pérdida irreversible de la clave privada:** como vimos en los [conceptos clave](/conceptos-clave), quien la pierde pierde sus fondos para siempre.
 
 ## 3. Riesgos legales y regulatorios
 
