@@ -22,7 +22,10 @@ const secciones = (await getCollection('secciones')).sort((a, b) => a.data.orden
     </section>
 
     <section class="ficha" aria-labelledby="ficha-titulo">
-      <h2 id="ficha-titulo">Identificación</h2>
+      <div class="ficha-titulo">
+        <img src={url('img/logo-umg.png')} alt="" width="72" height="72" />
+        <h2 id="ficha-titulo">Identificación</h2>
+      </div>
       <dl>
         <div><dt>Universidad</dt><dd>{sitio.universidad}</dd></div>
         <div><dt>Facultad</dt><dd>{sitio.facultad}</dd></div>
@@ -86,6 +89,8 @@ const secciones = (await getCollection('secciones')).sort((a, b) => a.data.orden
     padding: 0.5rem 1.5rem 1.5rem;
     margin-bottom: 3rem;
   }
+  .ficha-titulo { display: flex; align-items: center; gap: 1rem; margin: 1rem 0 1.25rem; }
+  .ficha-titulo h2 { margin: 0; }
   dl {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));

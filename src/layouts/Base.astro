@@ -20,7 +20,7 @@ const actual = Astro.url.pathname.replace(/\/$/, '');
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={descripcion} />
-    <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
+    <link rel="icon" type="image/png" href={url('img/logo-umg.png')} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,11 +31,14 @@ const actual = Astro.url.pathname.replace(/\/$/, '');
   </head>
   <body>
     <header class="identificacion">
-      <div class="contenedor">
-        <p class="uni">{sitio.universidad}</p>
-        <p class="curso">
-          {sitio.facultad} · {sitio.curso} · Sección {sitio.seccion}
-        </p>
+      <div class="contenedor cabecera">
+        <img class="logo" src={url('img/logo-umg.png')} alt="Escudo de la Universidad Mariano Gálvez de Guatemala" width="56" height="56" />
+        <div>
+          <p class="uni">{sitio.universidad}</p>
+          <p class="curso">
+            {sitio.facultad} · {sitio.curso} · Sección {sitio.seccion}
+          </p>
+        </div>
       </div>
     </header>
 
@@ -81,6 +84,8 @@ const actual = Astro.url.pathname.replace(/\/$/, '');
     .identificacion { background: #0b1830; }
   }
   .identificacion p { margin: 0; }
+  .cabecera { display: flex; align-items: center; gap: 0.9rem; }
+  .logo { flex: none; width: 56px; height: 56px; }
   .uni {
     font-family: var(--serif);
     font-weight: 700;
