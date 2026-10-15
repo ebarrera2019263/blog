@@ -48,7 +48,8 @@ const menu = [
         </a>
         <p class="institucion">
           {sitio.universidad}<br />
-          {sitio.facultad} · {sitio.curso} · Sección {sitio.seccion}
+          {sitio.facultad} · {sitio.programa}<br />
+          Curso: {sitio.curso} · Sección {sitio.seccion} · {sitio.ciclo}
         </p>
       </div>
     </header>
@@ -77,7 +78,7 @@ const menu = [
     <footer class="pie">
       <div class="envoltura pie-in">
         <p>
-          <strong>{sitio.nombre}</strong> · {sitio.universidad} · {sitio.curso}, sección {sitio.seccion} · {sitio.ciclo}
+          <strong>{sitio.nombre}</strong> · {sitio.universidad} · {sitio.programa} · {sitio.curso}, sección {sitio.seccion} · {sitio.ciclo}
         </p>
         <p>Fotografías de Unsplash, con crédito en cada entrada. Citas y referencias en formato APA 7.ª edición.</p>
       </div>

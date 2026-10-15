@@ -4,12 +4,13 @@ export const sitio = {
   nombre: 'Monedas Digitales',
   lema: 'Desafíos para su implementación. Blog del Grupo 6 del curso Economía Global.',
   universidad: 'Universidad Mariano Gálvez de Guatemala',
-  facultad: 'Facultad de Ciencias Económicas',
+  facultad: 'Facultad de Ciencias de la Administración',
+  programa: 'Maestría en Dirección del Marketing',
   curso: 'Economía Global',
-  seccion: '42026-1030-528-A',
+  seccion: 'A',
   grupo: 'Grupo 6',
-  catedratico: 'Lic. Nombre del Catedrático',
-  ciclo: 'Segundo semestre 2026',
+  catedratica: 'Dra. Lorena Jiménez Anzueto',
+  ciclo: 'Cuarto Ciclo 2026',
 };
 
 export type ClaveAutor = 'michelle' | 'zuisly' | 'karen' | 'grupo';

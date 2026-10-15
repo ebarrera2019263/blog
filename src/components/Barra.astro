@@ -21,10 +21,9 @@ for (const p of posts) {
     <img src={url('img/logo-umg.png')} alt="" width="64" height="64" />
     <h2>Sobre este blog</h2>
     <p>
-      Blog de investigación del curso <strong>{sitio.curso}</strong>, sección {sitio.seccion}, de la {sitio.facultad} de
-      la {sitio.universidad}.
+      Blog de investigación del curso <strong>{sitio.curso}</strong>, {`sección ${sitio.seccion}, de la ${sitio.programa}, ${sitio.facultad}, ${sitio.universidad}.`}
     </p>
-    <p class="detalle">Catedrático: {sitio.catedratico} · {sitio.ciclo}</p>
+    <p class="detalle">Catedrática: {sitio.catedratica} · {sitio.ciclo}</p>
     <a href={url('acerca')}>Acerca del blog y guía de la rúbrica</a>
   </section>
 

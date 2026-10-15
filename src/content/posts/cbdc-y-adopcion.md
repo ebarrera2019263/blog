@@ -3,7 +3,7 @@ titulo: "CBDC: cuando el banco central emite su propia moneda digital"
 resumen: Qué son las monedas digitales de bancos centrales, qué países ya las usan y cómo avanza la adopción en América Latina.
 fecha: 2026-10-10
 autor: zuisly
-etiquetas: [CBDC, Economía global, América Latina]
+etiquetas: [CBDC, EconomíaGlobal, América Latina]
 portada:
   src: img/portadas/adopcion.jpg
   alt: Una moneda de bitcoin dorada en primer plano.

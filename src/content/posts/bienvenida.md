@@ -3,7 +3,7 @@ titulo: "Monedas digitales: desafíos para su implementación"
 resumen: Bienvenidos al blog del Grupo 6. Presentamos el tema, la presentación de clase y el orden de lectura.
 fecha: 2026-10-05
 autor: grupo
-etiquetas: [Presentación, Economía global]
+etiquetas: [BlogEducativo, Criptomonedas, EconomíaGlobal]
 fijada: true
 diapositivas: true
 portada:

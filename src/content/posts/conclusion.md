@@ -3,7 +3,7 @@ titulo: "Conclusión: el papel de cada moneda digital"
 resumen: Cerramos la investigación con lo que aprendimos y con el comentario final de cada integrante.
 fecha: 2026-10-13
 autor: grupo
-etiquetas: [Conclusión, Economía global]
+etiquetas: [Conclusión, EconomíaGlobal]
 portada:
   src: img/portadas/futuro.jpg
   alt: Monedas doradas que salen volando de la pantalla de un teléfono celular.

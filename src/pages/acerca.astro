@@ -36,7 +36,8 @@ const rubrica = [
       <h1>Acerca del blog</h1>
       <p class="entradilla">
         <strong>{sitio.nombre}</strong> es el blog de investigación del {sitio.grupo} del curso {sitio.curso}. Explicamos qué son
-        las monedas digitales, cómo se usan en el mundo y qué desafíos plantea su implementación, también en Guatemala.
+        las monedas digitales, cómo se usan en el mundo, qué desafíos plantea su implementación y también su aplicación en
+        Guatemala.
       </p>
     </div>
   </header>
@@ -46,9 +47,10 @@ const rubrica = [
     <dl class="ficha">
       <div><dt>Universidad</dt><dd>{sitio.universidad}</dd></div>
       <div><dt>Facultad</dt><dd>{sitio.facultad}</dd></div>
+      <div><dt>Maestría</dt><dd>{sitio.programa.replace('Maestría en ', '')}</dd></div>
       <div><dt>Curso</dt><dd>{sitio.curso}</dd></div>
       <div><dt>Sección</dt><dd>{sitio.seccion}</dd></div>
-      <div><dt>Catedrático</dt><dd>{sitio.catedratico}</dd></div>
+      <div><dt>Catedrática</dt><dd>{sitio.catedratica}</dd></div>
       <div><dt>Ciclo</dt><dd>{sitio.ciclo}</dd></div>
       <div><dt>Grupo</dt><dd>{sitio.grupo}</dd></div>
     </dl>
