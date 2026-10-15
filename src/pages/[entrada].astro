@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import Avatar from '../components/Avatar.astro';
 import Firma from '../components/Firma.astro';
 import Etiquetas from '../components/Etiquetas.astro';
+import Diapositivas from '../components/Diapositivas.astro';
 import { autores } from '../data/sitio';
 import { url } from '../lib/url';
 import { obtenerPosts, fechaLarga, type Post } from '../lib/posts';
@@ -25,7 +26,7 @@ interface Props {
 
 const { post, anterior, siguiente } = Astro.props;
 const { Content } = await render(post);
-const { titulo, resumen, portada, etiquetas, autor, video, presentacion, comentarios } = post.data;
+const { titulo, resumen, portada, etiquetas, autor, video, videoCredito, diapositivas, comentarios } = post.data;
 const escritor = autores[autor];
 ---
 
@@ -45,27 +46,11 @@ const escritor = autores[autor];
       </figcaption>
     </figure>
 
-    {
-      presentacion && (
-        <figure class="embebido">
-          {presentacion === 'pendiente' ? (
-            <div class="pendiente">
-              <p>
-                <strong>Presentación de la clase.</strong> Pega aquí el enlace de Google Slides (Archivo → Compartir →
-                Publicar en la web → Insertar).
-              </p>
-            </div>
-          ) : (
-            <iframe src={presentacion} title="Presentación utilizada en clase" loading="lazy" allowfullscreen />
-          )}
-          <figcaption>Presentación utilizada en la exposición del grupo.</figcaption>
-        </figure>
-      )
-    }
-
     <div class="prosa">
       <Content />
     </div>
+
+    {diapositivas && <Diapositivas />}
 
     {
       video && (
@@ -86,7 +71,7 @@ const escritor = autores[autor];
               allowfullscreen
             />
           )}
-          <figcaption>Video complementario a esta entrada.</figcaption>
+          <figcaption>{videoCredito ?? 'Video complementario a esta entrada.'}</figcaption>
         </figure>
       )
     }

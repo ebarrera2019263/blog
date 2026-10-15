@@ -1,47 +1,46 @@
 ---
-titulo: "¿Qué son las criptomonedas y cómo funciona la blockchain?"
-resumen: Dinero sin banco de por medio. Explicamos el libro mayor público, la minería y las billeteras digitales.
-fecha: 2026-10-07
-autor: mishell
+titulo: "¿Qué son las criptomonedas y cómo funciona una transacción?"
+resumen: Dinero digital sin bancos de por medio. La definición y los cuatro pasos que sigue cada envío.
+fecha: 2026-10-06
+autor: michelle
 etiquetas: [Fundamentos, Blockchain]
-video: pendiente
+video: -uzrt7kDC1I
+videoCredito: "Bitcoin para dummies: explicación fácil para principiantes (Bolsa para principiantes, 2021)."
 portada:
   src: img/portadas/blockchain.jpg
   alt: Una moneda de bitcoin sobre la placa base de una computadora.
   credito: Michael Förtsch
   enlace: https://unsplash.com/photos/AA5sf7WTv10
 comentarios:
-  - autor: zuis
-    fecha: 2026-10-07
-    texto: El diagrama de los bloques me ayudó a entender por qué se dice que la blockchain es "inmutable". Lo voy a usar en mi parte de la exposición.
+  - autor: zuisly
+    fecha: 2026-10-06
+    texto: Los cuatro pasos dejan claro por qué no hace falta un banco. La red completa hace el trabajo de verificación.
   - autor: karen
-    fecha: 2026-10-08
-    texto: Lo de la clave privada conecta directo con los riesgos. Si la pierdes, nadie te devuelve el dinero.
+    fecha: 2026-10-07
+    texto: Lo de "irreversible" en la liquidación conecta directo con los riesgos. Si envías a la dirección equivocada, no hay vuelta atrás.
 ---
 
-Cuando pagamos con tarjeta, un banco verifica que tengamos fondos y registra la operación. Las criptomonedas proponen otra cosa: **pagar sin que ningún banco intervenga**. En esta entrada explico cómo es posible.
+## Definición general
 
-## Una definición
+Las criptomonedas son **monedas digitales que utilizan técnicas de cifrado (criptografía)** para garantizar transacciones seguras, controlar la creación de nuevas unidades y verificar la transferencia de activos (Cabrera Soto & Lago Codorniu, 2022).
 
-Una **criptomoneda** es un activo digital que usa criptografía para asegurar las transacciones y que funciona sobre una red descentralizada llamada **blockchain** (cadena de bloques). A diferencia del dinero tradicional, no la emite ni la respalda un banco central (FMI, 2021).
+A diferencia del dinero tradicional, como el dólar, el euro o el quetzal, **no existen físicamente** en forma de billetes o monedas, **ni están controladas por un gobierno o un banco central**.
 
-Su idea central es permitir pagos **entre pares** (*peer-to-peer*): una persona envía valor directamente a otra. En lugar de confiar en un banco, se confía en las reglas matemáticas del sistema y en la verificación de miles de computadoras (Nakamoto, 2008).
+## Funcionamiento básico
 
-## Tres conceptos clave
+Una criptomoneda funciona con **transferencias directas de persona a persona** (*peer-to-peer*). Cada transferencia queda registrada en un libro contable digital, público e inalterable, llamado **blockchain**. La red de computadoras valida ese registro de forma descentralizada mediante criptografía, sin la intervención de bancos ni intermediarios (Cabrera Soto & Lago Codorniu, 2022).
 
-### 1. El libro mayor público
+## Los 4 pasos de una transacción
 
-La blockchain es un registro de todas las transacciones, agrupadas en **bloques** encadenados. Cada bloque guarda una huella digital (*hash*) del bloque anterior. Si alguien intenta alterar un registro antiguo, su huella cambia y deja de coincidir con la del bloque siguiente, por lo que tendría que rehacer toda la cadena.
+<ol class="pasos">
+  <li><strong>Solicitud.</strong> El usuario inicia el envío de criptomonedas desde su billetera digital con su clave de seguridad.</li>
+  <li><strong>Verificación.</strong> Una red de computadoras comprueba que la operación sea auténtica y que existan fondos suficientes.</li>
+  <li><strong>Registro.</strong> La transacción se agrupa en un bloque y se añade de forma permanente a la cadena (blockchain).</li>
+  <li><strong>Liquidación.</strong> El dinero llega al destinatario y la operación queda completada de forma irreversible.</li>
+</ol>
 
-![Diagrama de tres bloques enlazados, cada uno con el hash del bloque anterior](/blog/img/blockchain.svg)
-*Figura 1. Cada bloque guarda el hash del anterior. Elaboración propia con base en Nakamoto (2008).*
+> Ningún banco aprueba la operación. Lo hace toda la red.
 
-### 2. La minería
+## Para entenderlo en 5 minutos
 
-Es el proceso por el cual los participantes de la red compiten resolviendo problemas computacionales para validar un nuevo bloque. Quien lo logra recibe criptomonedas nuevas como recompensa (Nakamoto, 2008). Este proceso es el que consume grandes cantidades de electricidad.
-
-### 3. La billetera digital (wallet)
-
-Es el programa que guarda las **claves privadas** del usuario. Quien tiene la clave privada controla los fondos. Si se pierde, no existe una "recuperación de contraseña": el dinero queda inaccesible para siempre.
-
-> Sin banco de por medio, la seguridad de tu dinero depende solo de ti.
+Este video explica de forma sencilla cómo funciona Bitcoin, la primera criptomoneda (Bolsa para principiantes, 2021).

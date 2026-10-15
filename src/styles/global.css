@@ -117,6 +117,59 @@ img { max-width: 100%; height: auto; display: block; }
   .prosa blockquote { color: oklch(0.8 0.1 27); }
 }
 
+/* Pasos numerados (una secuencia real) */
+.prosa .pasos { list-style: none; padding: 0; margin: 1.5rem 0; counter-reset: paso; display: grid; gap: 0.75rem; }
+.prosa .pasos li {
+  counter-increment: paso;
+  position: relative;
+  margin: 0;
+  padding: 1rem 1.25rem 1rem 4.5rem;
+  min-height: 4.5rem;
+  background: var(--tenue);
+  border-radius: 8px;
+}
+.prosa .pasos li::before {
+  content: counter(paso);
+  position: absolute;
+  left: 1.25rem;
+  top: 1rem;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--rojo);
+  color: oklch(1 0 0);
+  font-family: var(--titulos);
+  font-weight: 800;
+}
+
+/* Gráfica de barras horizontal (una serie, etiquetas directas) */
+.prosa .grafica { margin: 2rem 0 0.5rem; font-family: var(--titulos); }
+.prosa .grafica-titulo { font-weight: 700; margin: 0 0 1rem; }
+.prosa .barras { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+.prosa .barras li {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  font-size: var(--paso--1);
+}
+.prosa .barras .fila { display: flex; align-items: center; gap: 0.6rem; }
+.prosa .barras .dato {
+  display: block;
+  flex: none;
+  height: 1.4rem;
+  width: calc(var(--v) / 21 * 82%);
+  background: var(--azul);
+  border-radius: 0 4px 4px 0;
+  transition: opacity 0.2s var(--ease);
+}
+.prosa .barras li:hover .dato { opacity: 0.8; }
+.prosa .barras .valor { font-weight: 700; font-variant-numeric: tabular-nums; }
+.prosa .grafica + p > em:only-child { display: block; font-family: var(--titulos); font-size: var(--paso--1); font-style: normal; color: var(--suave); }
+
 /* Referencias APA: sangría francesa */
 .apa p { padding-left: 2.5rem; text-indent: -2.5rem; margin-bottom: 1rem; }
 

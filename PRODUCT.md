@@ -10,7 +10,7 @@ Two readers. The **catedrático** of Economía Global (UMG, sección 42026-1030-
 
 ## Product Purpose
 
-A group research blog on cryptocurrencies in the global economy, written by three students (Mishell, Zuis, Karen), each authoring their own posts. It must read as a real blog (chronological entries with author, date, reading time, tags, an author sidebar and archive) while still satisfying every rubric item. Success: the professor finds each rubric item without hunting, and the blog clearly stands apart from the Wix/Blogspot templates other groups submit.
+A group research blog on digital currencies and the challenges of implementing them, written by Grupo 6: Michelle Calderón, Zuisly Flores and Karen Altun, each authoring their own posts. It must read as a real blog (chronological entries with author, date, reading time, tags, an author sidebar and archive) while still satisfying every rubric item. Success: the professor finds each rubric item without hunting, and the blog clearly stands apart from the Wix/Blogspot templates other groups submit.
 
 ## Brand Personality
 

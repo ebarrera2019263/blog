@@ -14,10 +14,10 @@ const rubrica = [
   {
     letra: 'B',
     punto: 'Exposición del tema: presentación y desarrollo',
-    donde: ['bienvenida', 'que-son-las-criptomonedas', 'tipos-de-criptomonedas', 'el-salvador-y-bitcoin', 'por-que-unos-paises-si-y-otros-no', 'riesgos-de-las-criptomonedas'],
+    donde: ['bienvenida', 'que-son-las-criptomonedas', 'conceptos-clave', 'tipos-de-criptomonedas', 'el-salvador-y-bitcoin', 'cbdc-y-adopcion', 'riesgos-de-las-criptomonedas'],
   },
   { letra: 'C', punto: 'Aplicación en Guatemala', donde: ['criptomonedas-en-guatemala'] },
-  { letra: 'D', punto: 'Comentarios del grupo', donde: [{ texto: 'Al pie de cada entrada', href: url() }, 'futuro-del-dinero-digital'] },
+  { letra: 'D', punto: 'Comentarios del grupo', donde: [{ texto: 'Al pie de cada entrada', href: url() }, 'conclusion'] },
   { letra: 'E', punto: 'Referencias APA', donde: [{ texto: 'Lista de referencias', href: url('referencias') }] },
 ].map((r) => ({
   ...r,
@@ -35,8 +35,8 @@ const rubrica = [
     <div>
       <h1>Acerca del blog</h1>
       <p class="entradilla">
-        <strong>{sitio.nombre}</strong> es el blog de investigación grupal del curso {sitio.curso}. Explicamos qué son las
-        criptomonedas, cómo se usan en el mundo y qué significan para Guatemala.
+        <strong>{sitio.nombre}</strong> es el blog de investigación del {sitio.grupo} del curso {sitio.curso}. Explicamos qué son
+        las monedas digitales, cómo se usan en el mundo y qué desafíos plantea su implementación, también en Guatemala.
       </p>
     </div>
   </header>
@@ -50,6 +50,7 @@ const rubrica = [
       <div><dt>Sección</dt><dd>{sitio.seccion}</dd></div>
       <div><dt>Catedrático</dt><dd>{sitio.catedratico}</dd></div>
       <div><dt>Ciclo</dt><dd>{sitio.ciclo}</dd></div>
+      <div><dt>Grupo</dt><dd>{sitio.grupo}</dd></div>
     </dl>
   </section>
 
@@ -61,7 +62,7 @@ const rubrica = [
           <li>
             <Avatar autor={c} tam={52} />
             <div>
-              <a href={url(`autores/${c}`)}>{autores[c].nombre}</a>
+              <a href={url(`autores/${c}`)}>{autores[c].completo}</a>
               <span>{autores[c].carne}</span>
               <span>{autores[c].tema}</span>
             </div>

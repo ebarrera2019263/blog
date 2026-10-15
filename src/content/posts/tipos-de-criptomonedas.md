@@ -1,8 +1,8 @@
 ---
 titulo: "Bitcoin, Ethereum y stablecoins: los tipos de criptomonedas"
-resumen: No todas las criptomonedas sirven para lo mismo. Las clasificamos según su función.
+resumen: Reserva de valor, plataforma de contratos inteligentes y medio de pago estable. Para qué sirve cada una.
 fecha: 2026-10-08
-autor: mishell
+autor: michelle
 etiquetas: [Fundamentos, Bitcoin, Ethereum, Stablecoins]
 portada:
   src: img/portadas/tipos.jpg
@@ -10,38 +10,36 @@ portada:
   credito: Pierre Borthiry
   enlace: https://unsplash.com/photos/vBCVcWUyvyM
 comentarios:
-  - autor: karen
+  - autor: zuisly
     fecha: 2026-10-08
-    texto: Las stablecoins son clave para mi parte. Son las que más se usan en países con inflación alta, pero dependen de que el emisor de verdad tenga las reservas.
+    texto: Que USDT se use para remesas de bajo costo es muy relevante para Centroamérica. Lo retomo en la entrada de El Salvador.
 ---
 
-Cuando se habla de criptomonedas casi siempre se piensa en Bitcoin, pero existen miles y no todas cumplen la misma función. Esta es la clasificación que usamos en nuestra investigación.
+No todas las criptomonedas sirven para lo mismo. En nuestra investigación las agrupamos en tres tipos principales.
 
-![Diagrama con cuatro categorías de criptomonedas: reserva de valor, contratos inteligentes, stablecoins, altcoins y tokens](/blog/img/tipos.svg)
-*Figura 1. Clasificación general de las criptomonedas. Elaboración propia.*
+## Monedas principales (reserva de valor): Bitcoin (BTC)
 
-## Reserva de valor: Bitcoin (BTC)
+Bitcoin se compara con frecuencia con el **oro** y se considera una posible reserva de valor digital. Las razones son su política monetaria estricta, su transparencia, su descentralización y, sobre todo, su **oferta limitada a un máximo de 21 millones de unidades** (Moreno, 2025).
 
-Bitcoin es la primera y la más conocida. Su oferta está limitada a **21 millones de unidades**, por lo que muchos inversionistas la ven como un "oro digital": un activo para conservar valor más que para pagar en el día a día (Corbet et al., 2019).
+Su red está asegurada por el mecanismo de consenso de **Prueba de Trabajo** (*Proof of Work*, PoW), sostenido por la red computacional más grande del mundo.
 
 ## Plataformas de contratos inteligentes: Ethereum (ETH)
 
-Ethereum permite programar **contratos inteligentes**: acuerdos que se ejecutan solos cuando se cumplen ciertas condiciones. Sobre ella se construyen **aplicaciones descentralizadas (dApps)**, como servicios de préstamos o mercados digitales (Buterin, 2014).
+**Ethereum** es una plataforma descentralizada de código abierto, propuesta por **Vitalik Buterin en 2013**, que permite desarrollar contratos inteligentes con la tecnología de cadena de bloques (Belles, 2019).
+
+Como Ethereum es una **máquina completa de Turing**, los desarrolladores pueden programar aplicaciones descentralizadas (**dApps**) y contratos inteligentes con lenguajes como **Solidity**.
 
 ## Monedas estables (stablecoins): USDT y USDC
 
-Las *stablecoins* buscan mantener un valor fijo, normalmente 1 a 1 con el dólar estadounidense. Para lograrlo, el emisor respalda cada unidad con reservas en dinero fiduciario o en instrumentos de corto plazo. **Tether (USDT)** y **USD Coin (USDC)** son las más usadas. Su objetivo es evitar la volatilidad de las demás criptomonedas (FMI, 2021).
+Mientras que Bitcoin o Ether pueden subir o bajar de precio drásticamente en cuestión de días, las **stablecoins** están diseñadas específicamente para **evitar la volatilidad** (Neuto Yate & Varón Quiroga, 2022). Dos gigantes dominan este mercado:
 
-## Altcoins y tokens de utilidad
+- **Tether (USDT):** la stablecoin más utilizada en el mundo y la de mayor volumen de comercio. Se emplea masivamente para enviar **remesas de bajo costo** y hacer intercambios rápidos.
+- **USD Coin (USDC):** emitida por la empresa **Circle** en colaboración con **Coinbase**. Se destaca por su estricto cumplimiento regulatorio, su transparencia y sus auditorías bancarias periódicas, por lo que es la preferida por empresas e instituciones financieras.
 
-- **Altcoins:** cualquier criptomoneda distinta de Bitcoin.
-- **Tokens de utilidad (*utility tokens*):** dan acceso a un servicio dentro de una plataforma específica, como pagar comisiones o usar una aplicación.
+| Tipo | Ejemplo | Función en la economía digital |
+| ---- | ------- | ------------------------------ |
+| Reserva de valor | Bitcoin (BTC) | "Oro digital" para conservar valor |
+| Contratos inteligentes | Ethereum (ETH) | Infraestructura para dApps |
+| Stablecoin | USDT, USDC | Medio de pago estable para el día a día |
 
-| Tipo | Ejemplo | Para qué sirve |
-| ---- | ------- | -------------- |
-| Reserva de valor | Bitcoin | Ahorro e inversión |
-| Contratos inteligentes | Ethereum | Aplicaciones descentralizadas |
-| Stablecoin | USDT, USDC | Pagos sin volatilidad |
-| Token de utilidad | Varios | Usar un servicio específico |
-
-*Tabla 1. Resumen de los tipos de criptomonedas. Elaboración propia.*
+*Tabla 1. Elaboración propia con base en Moreno (2025), Belles (2019) y Neuto Yate y Varón Quiroga (2022).*

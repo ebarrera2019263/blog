@@ -10,12 +10,12 @@ portada:
   credito: Daniel Castellón
   enlace: https://unsplash.com/photos/lXGMBh7eEXI
 comentarios:
-  - autor: zuis
+  - autor: zuisly
     fecha: 2026-10-12
     texto: No sabía que ya existía una ley que obliga a los exchanges a reportar a la IVE. Es un dato muy actual para la exposición.
-  - autor: mishell
+  - autor: michelle
     fecha: 2026-10-13
-    texto: La tabla final resume perfecto la situación. Se la voy a mostrar a mi familia, porque muchos creen que en Guatemala está prohibido.
+    texto: La tabla final resume perfecto la situación. Muchos creen que en Guatemala está prohibido y no es así.
 ---
 
 Después de ver el caso de El Salvador, la pregunta obligada es: **¿qué pasa en Guatemala?** La respuesta corta es que usar criptomonedas no está prohibido, pero tampoco están reguladas como moneda. Cualquier persona puede comprarlas, venderlas o guardarlas, pero lo hace bajo su propio riesgo.

@@ -10,19 +10,19 @@ portada:
   credito: Maxim Hopman
   enlace: https://unsplash.com/photos/fiXLQXAhCfk
 comentarios:
-  - autor: zuis
+  - autor: zuisly
     fecha: 2026-10-11
-    texto: El caso de FTX muestra que incluso las plataformas grandes pueden caer. Por eso el FMI insistía tanto con El Salvador.
-  - autor: mishell
+    texto: Por estos riesgos el FMI insistió tanto con El Salvador. Y es justo lo que una CBDC intenta evitar.
+  - autor: michelle
     fecha: 2026-10-12
     texto: Me quedo con la idea de que la descentralización tiene un costo. Nadie te protege si algo sale mal.
 ---
 
-En las entradas anteriores vimos qué son las criptomonedas y por qué algunos países las adoptan. Ahora toca la parte crítica: **¿qué puede salir mal?**
+En las entradas anteriores vimos qué son las criptomonedas, sus tipos y cómo las adoptan los países. Ahora toca la parte crítica: **¿qué puede salir mal?**
 
 ## 1. Riesgos de mercado
 
-- **Alta volatilidad:** el precio de una criptomoneda puede subir o caer más del 50 % en pocos meses. Corbet et al. (2019) muestran que su comportamiento está poco relacionado con el de los activos financieros tradicionales, lo que las hace difíciles de valorar.
+- **Alta volatilidad:** el precio de una criptomoneda puede subir o caer drásticamente en cuestión de días. Corbet et al. (2019) muestran que su comportamiento está poco relacionado con el de los activos financieros tradicionales, lo que las hace difíciles de valorar.
 - **Especulación:** gran parte de la demanda viene de personas que compran esperando que el precio suba, no de su uso como medio de pago. Esto favorece la formación de **burbujas**.
 
 ## 2. Riesgos tecnológicos y de seguridad
@@ -30,11 +30,11 @@ En las entradas anteriores vimos qué son las criptomonedas y por qué algunos p
 - **Ciberataques a plataformas:** los exchanges (casas de cambio digitales) concentran fondos de miles de usuarios y son blanco de hackers. En 2014, el exchange japonés **Mt. Gox** quebró tras perder cientos de miles de bitcoins.
 - **Quiebras y fraudes:** en 2022 colapsó **FTX**, uno de los exchanges más grandes del mundo, y millones de usuarios perdieron acceso a sus fondos.
 - **Estafas en línea:** *phishing* (páginas falsas que roban claves), esquemas Ponzi y falsas "inversiones garantizadas".
-- **Pérdida irreversible de claves privadas:** no existe un banco que restablezca el acceso.
+- **Pérdida irreversible de la clave privada:** como vimos en los [conceptos clave](/blog/conceptos-clave), quien la pierde pierde sus fondos para siempre.
 
 ## 3. Riesgos legales y regulatorios
 
 - **Lavado de dinero y financiamiento ilícito:** Foley et al. (2019) estimaron que, en los primeros años de Bitcoin, cerca de **una cuarta parte de sus usuarios** y casi **la mitad de sus transacciones** estaban asociados a actividades ilegales.
-- **Falta de protección al usuario:** en la mayoría de los países no existe un seguro de depósitos ni una autoridad que responda si una plataforma quiebra (FMI, 2021).
+- **Falta de protección al usuario:** en la mayoría de los países no existe un seguro de depósitos ni una autoridad que responda si una plataforma quiebra (Fondo Monetario Internacional [FMI], 2021).
 
 > A mayor descentralización, menor protección para el usuario.
