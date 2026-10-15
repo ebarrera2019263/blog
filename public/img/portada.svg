@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 360" font-family="'Source Sans 3', Helvetica, Arial, sans-serif">
+  <rect width="920" height="360" fill="#0f2c59"/>
+  <g fill="none" stroke="#b8862b" stroke-linecap="round">
+    <path d="M150 250 C 330 40, 590 40, 770 250" stroke-width="3"/>
+    <path d="M150 250 C 330 90, 590 90, 770 250" stroke-width="2" opacity=".6"/>
+    <path d="M150 250 C 330 140, 590 140, 770 250" stroke-width="1.5" opacity=".35"/>
+  </g>
+  <g fill="#b8862b">
+    <circle cx="300" cy="118" r="5"/>
+    <circle cx="460" cy="92" r="6"/>
+    <circle cx="620" cy="118" r="5"/>
+  </g>
+  <circle cx="150" cy="250" r="14" fill="#fbfaf7"/>
+  <circle cx="770" cy="250" r="14" fill="#fbfaf7"/>
+  <g fill="#fbfaf7" font-size="20" font-weight="600" text-anchor="middle">
+    <text x="150" y="296">Estados Unidos</text>
+    <text x="770" y="296">Guatemala</text>
+  </g>
+  <text x="460" y="330" fill="#fbfaf7" opacity=".7" font-size="16" text-anchor="middle">US$21,510 millones en remesas durante 2024</text>
+</svg>

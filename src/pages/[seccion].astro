@@ -1,0 +1,115 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/url';
+
+export async function getStaticPaths() {
+  const secciones = (await getCollection('secciones')).sort((a, b) => a.data.orden - b.data.orden);
+  return secciones.map((entrada, i) => ({
+    params: { seccion: entrada.id },
+    props: { entrada, anterior: secciones[i - 1], siguiente: secciones[i + 1] },
+  }));
+}
+
+const { entrada, anterior, siguiente } = Astro.props;
+const { Content } = await render(entrada);
+const { titulo, letra, descripcion, video, presentacion } = entrada.data;
+---
+
+<Base titulo={titulo} descripcion={descripcion}>
+  <article class="contenedor">
+    <p class="etiqueta">Sección {letra}</p>
+    <h1>{titulo}</h1>
+    <p class="sub">{descripcion}</p>
+
+    {
+      presentacion && (
+        <figure class="embed">
+          {presentacion === 'pendiente' ? (
+            <div class="pendiente">
+              Aquí va la presentación (Google Slides → Archivo → Compartir → Publicar en la web → Insertar).
+            </div>
+          ) : (
+            <iframe src={presentacion} title="Presentación del tema" loading="lazy" allowfullscreen />
+          )}
+          <figcaption>Presentación utilizada en clase.</figcaption>
+        </figure>
+      )
+    }
+
+    <div class={entrada.id.includes('referencias') ? 'prosa apa' : 'prosa'}>
+      <Content />
+    </div>
+
+    {
+      video && (
+        <figure class="embed">
+          {video === 'pendiente' ? (
+            <div class="pendiente">
+              Aquí va el video. Pon en <code>video:</code> el ID de YouTube (lo que va después de “v=” en el link).
+            </div>
+          ) : (
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${video}`}
+              title="Video relacionado al tema"
+              loading="lazy"
+              allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            />
+          )}
+          <figcaption>Video complementario.</figcaption>
+        </figure>
+      )
+    }
+
+    <nav class="paginacion" aria-label="Navegación entre secciones">
+      {anterior ? <a href={url(anterior.id)}>← {anterior.data.letra}. {anterior.data.titulo}</a> : <a href={url()}>← Inicio</a>}
+      {siguiente && <a class="sig" href={url(siguiente.id)}>{siguiente.data.letra}. {siguiente.data.titulo} →</a>}
+    </nav>
+  </article>
+</Base>
+
+<style>
+  .etiqueta {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--acento);
+  }
+  h1 { font-size: clamp(2rem, 6vw, 2.8rem); margin: 0.4rem 0 0.5rem; }
+  .sub { font-size: 1.2rem; color: var(--suave); margin-top: 0; }
+
+  .embed { margin: 2rem 0; }
+  .embed iframe,
+  .pendiente {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 10px;
+    background: var(--azul-claro);
+  }
+  .pendiente {
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--suave);
+    border: 1px dashed var(--borde);
+    font-size: 1rem;
+  }
+  figcaption { text-align: center; font-size: 0.95rem; color: var(--suave); margin-top: 0.4rem; }
+
+  .paginacion {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--borde);
+    font-size: 1rem;
+  }
+  .sig { margin-left: auto; text-align: right; }
+</style>

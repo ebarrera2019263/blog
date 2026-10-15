@@ -1,0 +1,129 @@
+---
+import { getCollection } from 'astro:content';
+import { sitio, integrantes } from '../data/sitio';
+import { url } from '../lib/url';
+import '../styles/global.css';
+
+interface Props {
+  titulo?: string;
+  descripcion?: string;
+}
+
+const { titulo, descripcion = sitio.subtitulo } = Astro.props;
+const secciones = (await getCollection('secciones')).sort((a, b) => a.data.orden - b.data.orden);
+const actual = Astro.url.pathname.replace(/\/$/, '');
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={descripcion} />
+    <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Source+Sans+3:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>{titulo ? `${titulo} · ${sitio.tema}` : sitio.tema}</title>
+  </head>
+  <body>
+    <header class="identificacion">
+      <div class="contenedor">
+        <p class="uni">{sitio.universidad}</p>
+        <p class="curso">
+          {sitio.facultad} · {sitio.curso} · Sección {sitio.seccion}
+        </p>
+      </div>
+    </header>
+
+    <nav class="menu" aria-label="Secciones del blog">
+      <div class="contenedor menu-items">
+        <a href={url()} aria-current={actual === url().replace(/\/$/, '') ? 'page' : undefined}>Inicio</a>
+        {
+          secciones.map((s) => {
+            const href = url(s.id);
+            return (
+              <a href={href} aria-current={actual === href ? 'page' : undefined}>
+                <span class="letra">{s.data.letra}</span> {s.data.titulo}
+              </a>
+            );
+          })
+        }
+      </div>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="pie">
+      <div class="contenedor">
+        <p><strong>{sitio.grupo}</strong> · {sitio.ciclo} · Catedrático: {sitio.catedratico}</p>
+        <ul>
+          {integrantes.map((i) => <li>{i.nombre} — {i.carne}</li>)}
+        </ul>
+        <p class="nota">Trabajo académico. Citas y referencias en formato APA 7.ª edición.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .identificacion {
+    background: var(--azul);
+    color: #fff;
+    padding: 1rem 0 0.9rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    .identificacion { background: #0b1830; }
+  }
+  .identificacion p { margin: 0; }
+  .uni {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+  .curso { font-size: 0.95rem; opacity: 0.85; }
+
+  .menu {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--tarjeta);
+    border-bottom: 1px solid var(--borde);
+  }
+  .menu-items {
+    display: flex;
+    gap: 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .menu a {
+    flex: none;
+    font-size: 0.95rem;
+    text-decoration: none;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    color: var(--suave);
+    white-space: nowrap;
+  }
+  .menu a:hover { background: var(--azul-claro); color: var(--azul); }
+  .menu a[aria-current='page'] { background: var(--azul); color: var(--fondo); }
+  .letra { font-weight: 600; }
+
+  main { padding: 2.5rem 0 4rem; }
+
+  .pie {
+    border-top: 1px solid var(--borde);
+    padding: 2rem 0;
+    font-size: 0.95rem;
+    color: var(--suave);
+  }
+  .pie ul { padding-left: 1.1rem; margin: 0.5rem 0; }
+  .nota { font-style: italic; }
+</style>

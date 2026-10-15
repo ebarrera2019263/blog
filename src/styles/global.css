@@ -1,0 +1,86 @@
+:root {
+  --azul: #0f2c59;
+  --azul-claro: #e8eef8;
+  --acento: #b8862b;
+  --texto: #1d2433;
+  --suave: #5a6478;
+  --fondo: #fbfaf7;
+  --tarjeta: #ffffff;
+  --borde: #e2ded5;
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'Source Sans 3', system-ui, sans-serif;
+  --ancho: 46rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --azul: #9dbcf0;
+    --azul-claro: #18233a;
+    --acento: #e0b660;
+    --texto: #e6e8ee;
+    --suave: #a2abbd;
+    --fondo: #10141d;
+    --tarjeta: #171c28;
+    --borde: #2a3142;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: var(--sans);
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+a { color: var(--azul); text-underline-offset: 3px; }
+a:hover { color: var(--acento); }
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  line-height: 1.2;
+  color: var(--azul);
+  text-wrap: balance;
+}
+
+img { max-width: 100%; height: auto; }
+
+.prosa { overflow-wrap: anywhere; }
+
+.contenedor {
+  width: 100%;
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Contenido en Markdown */
+.prosa h2 { margin-top: 2.5rem; font-size: 1.6rem; }
+.prosa h3 { margin-top: 1.8rem; font-size: 1.25rem; }
+.prosa blockquote {
+  margin: 1.5rem 0;
+  padding: 0 0 0 1.25rem;
+  border-left: 2px solid var(--borde);
+  font-family: var(--serif);
+  font-size: 1.15rem;
+}
+.prosa blockquote p { margin: 0.4rem 0; }
+.prosa table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  display: block;
+  overflow-x: auto;
+}
+.prosa th, .prosa td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--borde); text-align: left; }
+.prosa th { color: var(--azul); }
+.prosa img { display: block; margin: 1.5rem auto 0.25rem; border-radius: 8px; border: 1px solid var(--borde); }
+.prosa img + em, .prosa table + p > em:only-child { display: block; text-align: center; font-size: 0.95rem; color: var(--suave); }
+
+/* Referencias APA: sangría francesa */
+.apa p { padding-left: 2.5rem; text-indent: -2.5rem; }
