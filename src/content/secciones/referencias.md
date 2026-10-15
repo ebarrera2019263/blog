@@ -2,17 +2,29 @@
 titulo: Referencias
 letra: E
 descripcion: Fuentes consultadas, en formato APA 7.ª edición.
-orden: 5
+orden: 7
 ---
 
-Adams, R. H., Jr., & Page, J. (2005). Do international migration and remittances reduce poverty in developing countries? *World Development, 33*(10), 1645–1669. https://doi.org/10.1016/j.worlddev.2004.05.004
+Alvarez, F., Argente, D., & Van Patten, D. (2023). Are cryptocurrencies currencies? Bitcoin as legal tender in El Salvador. *Science, 382*(6677). https://doi.org/10.1126/science.add2844
 
-Banco de Guatemala. (2025). *Ingreso de divisas por remesas familiares* [Estadísticas]. https://www.banguat.gob.gt
+Buterin, V. (2014). *Ethereum: A next-generation smart contract and decentralized application platform* [Libro blanco]. https://ethereum.org/whitepaper
 
-Chami, R., Fullenkamp, C., & Jahjah, S. (2005). Are immigrant remittance flows a source of capital for development? *IMF Staff Papers, 52*(1), 55–81.
+Cambridge Centre for Alternative Finance. (s.f.). *Cambridge Bitcoin Electricity Consumption Index*. Universidad de Cambridge. https://ccaf.io/cbnsi/cbeci
 
-Organización Internacional para las Migraciones. (2023). *Encuesta sobre migración internacional de personas guatemaltecas y remesas 2022*. OIM.
+Corbet, S., Lucey, B., Urquhart, A., & Yarovaya, L. (2019). Cryptocurrencies as a financial asset: A systematic analysis. *International Review of Financial Analysis, 62*, 182–199. https://doi.org/10.1016/j.irfa.2018.09.003
 
-Ratha, D., Plaza, S., & Kim, E. J. (2024, 18 de diciembre). *In 2024, remittance flows to low- and middle-income countries are expected to reach $685 billion, larger than FDI and ODA combined*. World Bank Blogs. https://blogs.worldbank.org
+CriptoNoticias. (2017). *Banco Central de Guatemala: criptomonedas no son medio legal de pago*. https://criptonoticias.com/comunidad/banco-central-guatemala-criptomonedas-no-son-medio-legal-pago
 
-Yang, D. (2011). Migrant remittances. *Journal of Economic Perspectives, 25*(3), 129–152. https://doi.org/10.1257/jep.25.3.129
+CriptoNoticias. (2026). *Guatemala inicia en septiembre el control antilavado sobre exchanges de criptomonedas*. https://www.criptonoticias.com/regulacion/guatemala-servicios-criptomonedas-ley-antilavado/
+
+Electronic Payments International. (2025). *El Salvador amends Bitcoin law to secure IMF loan*. https://www.electronicpaymentsinternational.com/news/el-salvador-amends-bitcoin-law-imf
+
+Emisoras Unidas. (2021, 21 de febrero). *Superintendencia de Bancos se pronuncia por las monedas virtuales*. https://emisorasunidas.com/2021/02/21/superintendencia-bancos-monedas-virtuales/
+
+Foley, S., Karlsen, J. R., & Putniņš, T. J. (2019). Sex, drugs, and bitcoin: How much illegal activity is financed through cryptocurrencies? *The Review of Financial Studies, 32*(5), 1798–1853. https://doi.org/10.1093/rfs/hhz015
+
+Fondo Monetario Internacional. (2021). The crypto ecosystem and financial stability challenges. En *Global Financial Stability Report: COVID-19, crypto, and climate* (cap. 2). FMI.
+
+Nakamoto, S. (2008). *Bitcoin: A peer-to-peer electronic cash system*. https://bitcoin.org/bitcoin.pdf
+
+Prensa Libre. (2026). *Nueva ley antilavado: amplía controles a criptomonedas, profesionales, inmobiliarias y empresas*. https://www.prensalibre.com/economia/nueva-ley-antilavado-amplia-controles-a-criptomonedas-profesionales-inmobiliarias-y-empresas/

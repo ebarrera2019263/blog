@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 250" font-family="'Source Sans 3', Helvetica, Arial, sans-serif">
+  <rect width="680" height="250" fill="#ffffff"/>
+  <defs>
+    <marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#b8862b"/></marker>
+  </defs>
+  <g>
+    <rect x="20" y="40" width="180" height="170" rx="10" fill="#e8eef8" stroke="#0f2c59" stroke-width="2"/>
+    <rect x="250" y="40" width="180" height="170" rx="10" fill="#e8eef8" stroke="#0f2c59" stroke-width="2"/>
+    <rect x="480" y="40" width="180" height="170" rx="10" fill="#e8eef8" stroke="#0f2c59" stroke-width="2"/>
+  </g>
+  <g font-size="17" font-weight="700" fill="#0f2c59" text-anchor="middle">
+    <text x="110" y="70">Bloque 1</text>
+    <text x="340" y="70">Bloque 2</text>
+    <text x="570" y="70">Bloque 3</text>
+  </g>
+  <g font-size="13" fill="#1d2433">
+    <text x="36" y="104">Hash anterior: 0000</text>
+    <text x="36" y="132">Transacciones:</text>
+    <text x="36" y="152">Ana → Luis 0.5</text>
+    <text x="36" y="190" font-weight="600" fill="#b8862b">Hash: 8f3a…</text>
+    <text x="266" y="104">Hash anterior: 8f3a…</text>
+    <text x="266" y="132">Transacciones:</text>
+    <text x="266" y="152">Luis → Sofía 0.2</text>
+    <text x="266" y="190" font-weight="600" fill="#b8862b">Hash: c71e…</text>
+    <text x="496" y="104">Hash anterior: c71e…</text>
+    <text x="496" y="132">Transacciones:</text>
+    <text x="496" y="152">Sofía → Ana 0.1</text>
+    <text x="496" y="190" font-weight="600" fill="#b8862b">Hash: 2b9d…</text>
+  </g>
+  <g stroke="#b8862b" stroke-width="2.5" fill="none" marker-end="url(#f)">
+    <path d="M200 125 L248 125"/>
+    <path d="M430 125 L478 125"/>
+  </g>
+  <text x="340" y="238" font-size="12" fill="#5a6478" text-anchor="middle">Si alguien altera el Bloque 1, su hash cambia y deja de coincidir con el que guarda el Bloque 2.</text>
+</svg>

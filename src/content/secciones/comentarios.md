@@ -1,26 +1,22 @@
 ---
 titulo: Comentarios del grupo
 letra: D
-descripcion: La opinión de cada integrante sobre lo investigado.
-orden: 4
+descripcion: La opinión de cada integrante y la conclusión sobre el futuro del dinero digital.
+orden: 6
 ---
 
-### Integrante Uno
+### Mishell
 
-> Me sorprendió que las remesas superen a la inversión extranjera directa en los países en desarrollo. Creo que Guatemala debería crear incentivos para que una parte de ese dinero se convierta en ahorro e inversión.
+> Al investigar cómo funciona la blockchain, entendí que las criptomonedas no son solo "dinero de internet": son un sistema que reemplaza la confianza en un banco por reglas matemáticas. Me parece interesante, pero también comprendí que esa misma ausencia de intermediarios deja al usuario sin respaldo.
 
-### Integrante Dos
+### Zuis
 
-> La investigación muestra que las remesas reducen la pobreza, pero no reemplazan la generación de empleo formal. Si dependemos tanto de ellas, la economía queda expuesta a decisiones que se toman fuera del país.
+> El caso de El Salvador demuestra que una ley no basta para cambiar los hábitos de pago de la población. Aun con un bono de bienvenida, la mayoría dejó de usar bitcoin. Creo que la adopción tiene que venir de una necesidad real y no de una decisión política.
 
-### Integrante Tres
+### Karen
 
-> Desde la perspectiva de mi familia, que recibe remesas, el dinero se usa casi siempre para gastos del día a día. Coincido con la OIM (2023) en que hace falta educación financiera para los hogares receptores.
+> Guatemala ha optado por la prudencia, y el Decreto 15-2026 es un primer paso para evitar el lavado de dinero. Sin embargo, todavía falta un marco que proteja a las personas que invierten, porque muchas pierden su dinero en estafas.
 
-### Integrante Cuatro
+## Conclusión: el futuro del dinero digital
 
-> El efecto sobre el tipo de cambio fue lo más interesante para mí. Un quetzal estable ayuda a los importadores, pero puede perjudicar a los exportadores. Es un buen ejemplo de cómo un mismo flujo tiene ganadores y perdedores.
-
-## Conclusión del grupo
-
-Las remesas son un pilar de la economía guatemalteca y un ejemplo claro de cómo la globalización conecta los mercados laborales de distintos países. El reto es aprovecharlas para el desarrollo de largo plazo, sin depender de ellas.
+Las criptomonedas son una innovación tecnológica importante, pero hasta ahora no han reemplazado al dinero tradicional: su volatilidad, sus riesgos y la falta de protección para el usuario limitan su uso como medio de pago. El caso de El Salvador muestra los límites de imponerlas por ley, y el de Guatemala, la tendencia a regular primero a los intermediarios. Es probable que el futuro del dinero digital combine tecnologías como la blockchain con la supervisión de los bancos centrales, en lugar de reemplazarlos.
