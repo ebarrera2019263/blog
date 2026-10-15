@@ -1,0 +1,155 @@
+---
+import Base from '../layouts/Base.astro';
+import Avatar from '../components/Avatar.astro';
+import { sitio, autores, integrantes } from '../data/sitio';
+import { url } from '../lib/url';
+import { obtenerPosts } from '../lib/posts';
+
+const posts = await obtenerPosts();
+const porId = (id: string) => posts.find((p) => p.id === id);
+
+// Dónde encuentra el catedrático cada punto de la rúbrica.
+const rubrica = [
+  { letra: 'A', punto: 'Identificación de la UMG y del curso', donde: [{ texto: 'Cabecera de cada página y esta misma página', href: url('acerca') }] },
+  {
+    letra: 'B',
+    punto: 'Exposición del tema: presentación y desarrollo',
+    donde: ['bienvenida', 'que-son-las-criptomonedas', 'tipos-de-criptomonedas', 'el-salvador-y-bitcoin', 'por-que-unos-paises-si-y-otros-no', 'riesgos-de-las-criptomonedas'],
+  },
+  { letra: 'C', punto: 'Aplicación en Guatemala', donde: ['criptomonedas-en-guatemala'] },
+  { letra: 'D', punto: 'Comentarios del grupo', donde: [{ texto: 'Al pie de cada entrada', href: url() }, 'futuro-del-dinero-digital'] },
+  { letra: 'E', punto: 'Referencias APA', donde: [{ texto: 'Lista de referencias', href: url('referencias') }] },
+].map((r) => ({
+  ...r,
+  donde: r.donde.map((d) => {
+    if (typeof d !== 'string') return d;
+    const p = porId(d);
+    return { texto: p?.data.titulo ?? d, href: url(d) };
+  }),
+}));
+---
+
+<Base titulo="Acerca del blog" descripcion={`Quiénes somos y cómo está organizado ${sitio.nombre}.`}>
+  <header class="encabezado">
+    <img src={url('img/logo-umg.png')} alt="Escudo de la Universidad Mariano Gálvez de Guatemala" width="112" height="112" />
+    <div>
+      <h1>Acerca del blog</h1>
+      <p class="entradilla">
+        <strong>{sitio.nombre}</strong> es el blog de investigación grupal del curso {sitio.curso}. Explicamos qué son las
+        criptomonedas, cómo se usan en el mundo y qué significan para Guatemala.
+      </p>
+    </div>
+  </header>
+
+  <section aria-labelledby="identificacion">
+    <h2 id="identificacion">Identificación</h2>
+    <dl class="ficha">
+      <div><dt>Universidad</dt><dd>{sitio.universidad}</dd></div>
+      <div><dt>Facultad</dt><dd>{sitio.facultad}</dd></div>
+      <div><dt>Curso</dt><dd>{sitio.curso}</dd></div>
+      <div><dt>Sección</dt><dd>{sitio.seccion}</dd></div>
+      <div><dt>Catedrático</dt><dd>{sitio.catedratico}</dd></div>
+      <div><dt>Ciclo</dt><dd>{sitio.ciclo}</dd></div>
+    </dl>
+  </section>
+
+  <section aria-labelledby="integrantes">
+    <h2 id="integrantes">Integrantes</h2>
+    <ul class="equipo">
+      {
+        integrantes.map((c) => (
+          <li>
+            <Avatar autor={c} tam={52} />
+            <div>
+              <a href={url(`autores/${c}`)}>{autores[c].nombre}</a>
+              <span>{autores[c].carne}</span>
+              <span>{autores[c].tema}</span>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section aria-labelledby="rubrica" id="guia">
+    <h2 id="rubrica">Guía de la rúbrica</h2>
+    <p class="nota">Para el catedrático: dónde está cada requisito de la tarea dentro del blog.</p>
+    <ol class="rubrica">
+      {
+        rubrica.map((r) => (
+          <li>
+            <span class="letra" aria-hidden="true">{r.letra}</span>
+            <div>
+              <p class="punto">
+                <span class="sr-only">{r.letra}. </span>
+                {r.punto}
+              </p>
+              <ul>
+                {r.donde.map((d) => (
+                  <li>
+                    <a href={d.href}>{d.texto}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</Base>
+
+<style>
+  .encabezado { display: flex; gap: 1.75rem; align-items: center; max-width: 68ch; margin-bottom: 1rem; }
+  .encabezado img { width: 112px; height: 112px; flex: none; }
+  h1 { font-size: var(--paso-3); margin: 0 0 0.6rem; letter-spacing: -0.03em; }
+  .entradilla { margin: 0; color: var(--suave); }
+  @media (max-width: 40rem) {
+    .encabezado { flex-direction: column; align-items: flex-start; }
+    .encabezado img { width: 80px; height: 80px; }
+  }
+
+  section { margin-top: 3rem; max-width: 68ch; }
+  h2 { font-size: var(--paso-1); margin: 0 0 1.25rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--tinta); }
+  .nota { margin: -0.5rem 0 1.25rem; color: var(--suave); }
+
+  .ficha {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 1rem 2rem;
+    margin: 0;
+    font-family: var(--titulos);
+  }
+  dt { font-size: var(--paso--1); color: var(--suave); }
+  dd { margin: 0; font-weight: 600; }
+
+  .equipo { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+  .equipo li { display: flex; gap: 0.9rem; align-items: center; font-family: var(--titulos); }
+  .equipo div { display: flex; flex-direction: column; line-height: 1.35; }
+  .equipo a { font-weight: 700; color: var(--tinta); text-decoration: none; font-size: var(--paso-0); }
+  .equipo a:hover { text-decoration: underline; }
+  .equipo span { font-size: var(--paso--1); color: var(--suave); }
+
+  .rubrica { list-style: none; padding: 0; margin: 0; }
+  .rubrica > li { display: flex; gap: 1.25rem; padding: 1rem 0; border-bottom: 1px solid var(--borde); }
+  .letra {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--rojo);
+    color: oklch(1 0 0);
+    font-family: var(--titulos);
+    font-weight: 800;
+  }
+  .punto { margin: 0 0 0.35rem; font-family: var(--titulos); font-weight: 700; }
+  .rubrica ul { margin: 0; padding-left: 1.1rem; font-size: var(--paso--1); font-family: var(--titulos); }
+  .rubrica ul li { margin-bottom: 0.2rem; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+</style>

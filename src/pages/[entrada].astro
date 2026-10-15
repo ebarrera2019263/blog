@@ -1,0 +1,222 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Avatar from '../components/Avatar.astro';
+import Firma from '../components/Firma.astro';
+import Etiquetas from '../components/Etiquetas.astro';
+import { autores } from '../data/sitio';
+import { url } from '../lib/url';
+import { obtenerPosts, fechaLarga, type Post } from '../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await obtenerPosts();
+  return posts.map((post, i) => ({
+    params: { entrada: post.id },
+    // La lista está ordenada de más reciente a más antigua.
+    props: { post, anterior: posts[i + 1], siguiente: posts[i - 1] },
+  }));
+}
+
+interface Props {
+  post: Post;
+  anterior?: Post;
+  siguiente?: Post;
+}
+
+const { post, anterior, siguiente } = Astro.props;
+const { Content } = await render(post);
+const { titulo, resumen, portada, etiquetas, autor, video, presentacion, comentarios } = post.data;
+const escritor = autores[autor];
+---
+
+<Base titulo={titulo} descripcion={resumen}>
+  <article>
+    <header class="encabezado">
+      <Etiquetas etiquetas={etiquetas} />
+      <h1>{titulo}</h1>
+      <p class="entradilla">{resumen}</p>
+      <Firma post={post} tam={44} />
+    </header>
+
+    <figure class="portada">
+      <img src={url(portada.src)} alt={portada.alt} width="1600" height="900" />
+      <figcaption>
+        Foto: <a href={portada.enlace} rel="noopener">{portada.credito}</a> en Unsplash.
+      </figcaption>
+    </figure>
+
+    {
+      presentacion && (
+        <figure class="embebido">
+          {presentacion === 'pendiente' ? (
+            <div class="pendiente">
+              <p>
+                <strong>Presentación de la clase.</strong> Pega aquí el enlace de Google Slides (Archivo → Compartir →
+                Publicar en la web → Insertar).
+              </p>
+            </div>
+          ) : (
+            <iframe src={presentacion} title="Presentación utilizada en clase" loading="lazy" allowfullscreen />
+          )}
+          <figcaption>Presentación utilizada en la exposición del grupo.</figcaption>
+        </figure>
+      )
+    }
+
+    <div class="prosa">
+      <Content />
+    </div>
+
+    {
+      video && (
+        <figure class="embebido">
+          {video === 'pendiente' ? (
+            <div class="pendiente">
+              <p>
+                <strong>Video complementario.</strong> Escribe en <code>video:</code> el ID de YouTube (lo que va
+                después de “v=” en el enlace).
+              </p>
+            </div>
+          ) : (
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${video}`}
+              title="Video complementario"
+              loading="lazy"
+              allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            />
+          )}
+          <figcaption>Video complementario a esta entrada.</figcaption>
+        </figure>
+      )
+    }
+
+    <footer class="autor">
+      <Avatar autor={autor} tam={64} />
+      <div>
+        <p class="escrito">Escrito por <a href={url(`autores/${autor}`)}>{escritor.nombre}</a></p>
+        <p>{escritor.bio}</p>
+      </div>
+    </footer>
+
+    {
+      comentarios.length > 0 && (
+        <section class="comentarios" aria-labelledby="titulo-comentarios">
+          <h2 id="titulo-comentarios">
+            {comentarios.length} {comentarios.length === 1 ? 'comentario' : 'comentarios'} del grupo
+          </h2>
+          <ol>
+            {comentarios.map((c) => (
+              <li>
+                <Avatar autor={c.autor} tam={40} />
+                <div>
+                  <p class="quien">
+                    <a href={url(`autores/${c.autor}`)}>{autores[c.autor].nombre}</a>
+                    <time datetime={c.fecha.toISOString().slice(0, 10)}>{fechaLarga(c.fecha)}</time>
+                  </p>
+                  <p>{c.texto}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )
+    }
+
+    <nav class="vecinas" aria-label="Más entradas">
+      {
+        anterior && (
+          <a href={url(anterior.id)} class="ant">
+            <span>Entrada anterior</span>
+            {anterior.data.titulo}
+          </a>
+        )
+      }
+      {
+        siguiente && (
+          <a href={url(siguiente.id)} class="sig">
+            <span>Entrada siguiente</span>
+            {siguiente.data.titulo}
+          </a>
+        )
+      }
+    </nav>
+  </article>
+</Base>
+
+<style>
+  .encabezado { display: flex; flex-direction: column; gap: 0.9rem; max-width: 68ch; }
+  h1 { font-size: var(--paso-3); letter-spacing: -0.03em; margin: 0; }
+  .entradilla { margin: 0 0 0.5rem; font-size: var(--paso-1); line-height: 1.5; color: var(--suave); }
+
+  .portada { margin: 2rem 0 2.5rem; }
+  .portada img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; }
+  figcaption { margin-top: 0.5rem; font-family: var(--titulos); font-size: var(--paso--1); color: var(--suave); }
+
+  .embebido { margin: 2.5rem 0; max-width: 68ch; }
+  .embebido iframe, .pendiente {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 6px;
+    background: var(--tenue);
+  }
+  .pendiente {
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px dashed var(--borde);
+    font-family: var(--titulos);
+    font-size: var(--paso--1);
+    color: var(--suave);
+  }
+  .pendiente p { margin: 0; max-width: 40ch; }
+
+  .autor {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    max-width: 68ch;
+    margin-top: 3.5rem;
+    padding: 1.5rem;
+    background: var(--tenue);
+    border-radius: 8px;
+  }
+  .autor p { margin: 0; }
+  .autor p + p { margin-top: 0.35rem; color: var(--suave); }
+  .escrito { font-family: var(--titulos); font-weight: 700; }
+
+  .comentarios { max-width: 68ch; margin-top: 3.5rem; }
+  .comentarios h2 { font-size: var(--paso-1); margin: 0 0 1.5rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--tinta); }
+  .comentarios ol { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.75rem; }
+  .comentarios li { display: flex; gap: 0.9rem; }
+  .comentarios p { margin: 0; }
+  .quien { font-family: var(--titulos); font-size: var(--paso--1); display: flex; flex-wrap: wrap; gap: 0 0.6rem; margin-bottom: 0.25rem !important; }
+  .quien a { font-weight: 700; color: var(--tinta); text-decoration: none; }
+  .quien time { color: var(--suave); }
+
+  .vecinas {
+    display: grid;
+    gap: 1rem;
+    max-width: 68ch;
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--borde);
+  }
+  @media (min-width: 40rem) { .vecinas { grid-template-columns: 1fr 1fr; } }
+  .vecinas a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-family: var(--titulos);
+    font-weight: 700;
+    color: var(--tinta);
+    text-decoration: none;
+    line-height: 1.3;
+  }
+  .vecinas a:hover { color: var(--azul); }
+  .vecinas span { font-weight: 500; font-size: var(--paso--1); color: var(--suave); }
+  .sig { text-align: right; grid-column: 2; }
+  @media (max-width: 39.99rem) { .sig { grid-column: auto; } }
+</style>

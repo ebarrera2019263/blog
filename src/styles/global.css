@@ -1,27 +1,39 @@
+/* Rojo y azul tomados del escudo de la UMG. */
 :root {
-  --azul: #0f2c59;
-  --azul-claro: #e8eef8;
-  --acento: #b8862b;
-  --texto: #1d2433;
-  --suave: #5a6478;
-  --fondo: #fbfaf7;
-  --tarjeta: #ffffff;
-  --borde: #e2ded5;
-  --serif: 'Newsreader', Georgia, serif;
-  --sans: 'Source Sans 3', system-ui, sans-serif;
-  --ancho: 46rem;
+  --rojo: oklch(0.5 0.19 27);
+  --rojo-hondo: oklch(0.42 0.16 27);
+  --azul: oklch(0.45 0.13 250);
+  --fondo: oklch(0.985 0.003 250);
+  --superficie: oklch(1 0 0);
+  --tinta: oklch(0.22 0.02 260);
+  --suave: oklch(0.45 0.02 260);
+  --borde: oklch(0.9 0.008 250);
+  --tenue: oklch(0.955 0.008 250);
+
+  --titulos: 'Schibsted Grotesk', system-ui, sans-serif;
+  --lectura: 'Literata', Georgia, serif;
+
+  --paso--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
+  --paso-0: clamp(1.06rem, 1rem + 0.25vw, 1.15rem);
+  --paso-1: clamp(1.3rem, 1.2rem + 0.45vw, 1.5rem);
+  --paso-2: clamp(1.6rem, 1.4rem + 0.9vw, 2.05rem);
+  --paso-3: clamp(2rem, 1.6rem + 1.9vw, 3.1rem);
+
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
+  --z-sticky: 10;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --azul: #9dbcf0;
-    --azul-claro: #18233a;
-    --acento: #e0b660;
-    --texto: #e6e8ee;
-    --suave: #a2abbd;
-    --fondo: #10141d;
-    --tarjeta: #171c28;
-    --borde: #2a3142;
+    --rojo: oklch(0.45 0.17 27);
+    --rojo-hondo: oklch(0.38 0.14 27);
+    --azul: oklch(0.78 0.1 250);
+    --fondo: oklch(0.18 0.012 260);
+    --superficie: oklch(0.22 0.014 260);
+    --tinta: oklch(0.94 0.008 260);
+    --suave: oklch(0.76 0.015 260);
+    --borde: oklch(0.32 0.015 260);
+    --tenue: oklch(0.25 0.015 260);
   }
 }
 
@@ -32,55 +44,82 @@ html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   background: var(--fondo);
-  color: var(--texto);
-  font-family: var(--sans);
-  font-size: 1.125rem;
-  line-height: 1.7;
+  color: var(--tinta);
+  font-family: var(--lectura);
+  font-size: var(--paso-0);
+  line-height: 1.65;
 }
 
-a { color: var(--azul); text-underline-offset: 3px; }
-a:hover { color: var(--acento); }
-
-h1, h2, h3 {
-  font-family: var(--serif);
-  line-height: 1.2;
-  color: var(--azul);
+h1, h2, h3, h4 {
+  font-family: var(--titulos);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
   text-wrap: balance;
 }
 
-img { max-width: 100%; height: auto; }
+p, li { text-wrap: pretty; }
 
-.prosa { overflow-wrap: anywhere; }
+a { color: var(--azul); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
 
-.contenedor {
+img { max-width: 100%; height: auto; display: block; }
+
+:focus-visible { outline: 2px solid var(--azul); outline-offset: 3px; border-radius: 2px; }
+
+.envoltura {
   width: 100%;
-  max-width: var(--ancho);
+  max-width: 72rem;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-/* Contenido en Markdown */
-.prosa h2 { margin-top: 2.5rem; font-size: 1.6rem; }
-.prosa h3 { margin-top: 1.8rem; font-size: 1.25rem; }
+/* Cuerpo de las entradas (Markdown) */
+.prosa { max-width: 68ch; overflow-wrap: anywhere; }
+.prosa > :first-child { margin-top: 0; }
+.prosa h2 { font-size: var(--paso-2); margin: 2.75rem 0 0.75rem; }
+.prosa h3 { font-size: var(--paso-1); margin: 2rem 0 0.5rem; }
+.prosa p, .prosa ul, .prosa ol { margin: 0 0 1.15rem; }
+.prosa li { margin-bottom: 0.4rem; }
+.prosa strong { font-weight: 650; }
 .prosa blockquote {
-  margin: 1.5rem 0;
-  padding: 0 0 0 1.25rem;
-  border-left: 2px solid var(--borde);
-  font-family: var(--serif);
-  font-size: 1.15rem;
+  margin: 2rem 0;
+  padding: 0;
+  font-family: var(--titulos);
+  font-size: var(--paso-1);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--rojo-hondo);
 }
-.prosa blockquote p { margin: 0.4rem 0; }
+.prosa blockquote p { margin: 0; }
 .prosa table {
   width: 100%;
+  margin: 1.5rem 0 0.5rem;
   border-collapse: collapse;
-  font-size: 1rem;
+  font-family: var(--titulos);
+  font-size: var(--paso--1);
   display: block;
   overflow-x: auto;
 }
-.prosa th, .prosa td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--borde); text-align: left; }
-.prosa th { color: var(--azul); }
-.prosa img { display: block; margin: 1.5rem auto 0.25rem; border-radius: 8px; border: 1px solid var(--borde); }
-.prosa img + em, .prosa table + p > em:only-child { display: block; text-align: center; font-size: 0.95rem; color: var(--suave); }
+.prosa th, .prosa td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--borde); text-align: left; vertical-align: top; }
+.prosa th { font-weight: 700; border-bottom: 2px solid var(--tinta); }
+.prosa img { margin: 2rem auto 0.5rem; border-radius: 6px; background: oklch(1 0 0); }
+.prosa img + em,
+.prosa table + p > em:only-child {
+  display: block;
+  font-family: var(--titulos);
+  font-size: var(--paso--1);
+  font-style: normal;
+  color: var(--suave);
+}
+.prosa img + em { text-align: center; }
+
+@media (prefers-color-scheme: dark) {
+  .prosa blockquote { color: oklch(0.8 0.1 27); }
+}
 
 /* Referencias APA: sangría francesa */
-.apa p { padding-left: 2.5rem; text-indent: -2.5rem; }
+.apa p { padding-left: 2.5rem; text-indent: -2.5rem; margin-bottom: 1rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

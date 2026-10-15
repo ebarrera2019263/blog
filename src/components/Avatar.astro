@@ -1,0 +1,30 @@
+---
+import { autores, type ClaveAutor } from '../data/sitio';
+
+interface Props {
+  autor: ClaveAutor;
+  tam?: number;
+}
+
+const { autor, tam = 36 } = Astro.props;
+const a = autores[autor];
+---
+
+<span class="avatar" style={`--tono: ${a.tono}; --tam: ${tam}px`} aria-hidden="true">{a.iniciales}</span>
+
+<style>
+  .avatar {
+    flex: none;
+    display: inline-grid;
+    place-items: center;
+    width: var(--tam);
+    height: var(--tam);
+    border-radius: 50%;
+    background: var(--tono);
+    color: oklch(1 0 0);
+    font-family: var(--titulos);
+    font-weight: 700;
+    font-size: calc(var(--tam) * 0.36);
+    letter-spacing: 0.02em;
+  }
+</style>

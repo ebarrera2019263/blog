@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+import Avatar from '../../components/Avatar.astro';
+import Tarjeta from '../../components/Tarjeta.astro';
+import { autores, type ClaveAutor } from '../../data/sitio';
+import { obtenerPosts } from '../../lib/posts';
+
+export function getStaticPaths() {
+  return (Object.keys(autores) as ClaveAutor[]).map((autor) => ({ params: { autor } }));
+}
+
+const autor = Astro.params.autor as ClaveAutor;
+const a = autores[autor];
+const posts = (await obtenerPosts()).filter((p) => p.data.autor === autor);
+---
+
+<Base titulo={a.nombre} descripcion={a.bio}>
+  <header class="perfil">
+    <Avatar autor={autor} tam={88} />
+    <div>
+      <h1>{a.nombre}</h1>
+      <p class="tema">{a.tema}{a.carne && ` · ${a.carne}`}</p>
+      <p>{a.bio}</p>
+    </div>
+  </header>
+
+  <h2>{posts.length} {posts.length === 1 ? 'entrada' : 'entradas'}</h2>
+  {posts.map((p) => <Tarjeta post={p} />)}
+</Base>
+
+<style>
+  .perfil { display: flex; gap: 1.5rem; align-items: flex-start; max-width: 68ch; }
+  h1 { font-size: var(--paso-3); margin: 0; letter-spacing: -0.03em; }
+  .perfil p { margin: 0.4rem 0 0; }
+  .tema { font-family: var(--titulos); font-weight: 600; color: var(--suave); }
+  h2 { font-size: var(--paso-1); margin: 3rem 0 0; padding-bottom: 0.75rem; border-bottom: 2px solid var(--tinta); }
+</style>

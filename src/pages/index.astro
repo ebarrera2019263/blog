@@ -1,134 +1,27 @@
 ---
-import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import { sitio, integrantes } from '../data/sitio';
-import { url } from '../lib/url';
+import Tarjeta from '../components/Tarjeta.astro';
+import { obtenerPosts } from '../lib/posts';
 
-const secciones = (await getCollection('secciones')).sort((a, b) => a.data.orden - b.data.orden);
+const posts = await obtenerPosts();
+const fijada = posts.find((p) => p.data.fijada);
+const resto = posts.filter((p) => p !== fijada);
 ---
 
 <Base>
-  <div class="contenedor">
-    <section class="portada">
-      <p class="etiqueta">Blog de investigación · {sitio.grupo}</p>
-      <h1>{sitio.tema}</h1>
-      <p class="sub">{sitio.subtitulo}</p>
-      <img
-        src={url('img/portada.svg')}
-        alt="Ilustración: bloques encadenados con los símbolos de Bitcoin, Ethereum y el dólar"
-        width="920"
-        height="360"
-      />
-    </section>
+  {fijada && <Tarjeta post={fijada} destacada />}
 
-    <section class="ficha" aria-labelledby="ficha-titulo">
-      <div class="ficha-titulo">
-        <img src={url('img/logo-umg.png')} alt="" width="72" height="72" />
-        <h2 id="ficha-titulo">Identificación</h2>
-      </div>
-      <dl>
-        <div><dt>Universidad</dt><dd>{sitio.universidad}</dd></div>
-        <div><dt>Facultad</dt><dd>{sitio.facultad}</dd></div>
-        <div><dt>Curso</dt><dd>{sitio.curso}</dd></div>
-        <div><dt>Sección</dt><dd>{sitio.seccion}</dd></div>
-        <div><dt>Catedrático</dt><dd>{sitio.catedratico}</dd></div>
-        <div><dt>Ciclo</dt><dd>{sitio.ciclo}</dd></div>
-      </dl>
-      <h3>Integrantes</h3>
-      <ul class="integrantes">
-        {
-          integrantes.map((i) => (
-            <li>
-              <strong>{i.nombre}</strong>
-              <span>{i.carne} · {i.rol}</span>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-
-    <section aria-labelledby="contenido-titulo">
-      <h2 id="contenido-titulo">Contenido</h2>
-      <ol class="indice">
-        {
-          secciones.map((s) => (
-            <li>
-              <a href={url(s.id)}>
-                <span class="letra">{s.data.letra}</span>
-                <span>
-                  <strong>{s.data.titulo}</strong>
-                  <span class="desc">{s.data.descripcion}</span>
-                </span>
-              </a>
-            </li>
-          ))
-        }
-      </ol>
-    </section>
-  </div>
+  <section aria-labelledby="recientes" id="entradas">
+    <h2 id="recientes">Entradas recientes</h2>
+    {resto.map((p) => <Tarjeta post={p} />)}
+  </section>
 </Base>
 
 <style>
-  .portada { margin-bottom: 3rem; }
-  .etiqueta {
-    margin: 0;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--acento);
+  h2 {
+    font-size: var(--paso-1);
+    margin: 3rem 0 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--tinta);
   }
-  h1 { font-size: clamp(2.2rem, 7vw, 3.4rem); margin: 0.4rem 0 0.75rem; }
-  .sub { font-size: 1.25rem; color: var(--suave); margin: 0 0 2rem; }
-  .portada img { width: 100%; border-radius: 12px; }
-
-  .ficha {
-    background: var(--tarjeta);
-    border: 1px solid var(--borde);
-    border-radius: 12px;
-    padding: 0.5rem 1.5rem 1.5rem;
-    margin-bottom: 3rem;
-  }
-  .ficha-titulo { display: flex; align-items: center; gap: 1rem; margin: 1rem 0 1.25rem; }
-  .ficha-titulo h2 { margin: 0; }
-  dl {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-    gap: 0.75rem 1.5rem;
-    margin: 0;
-  }
-  dt { font-size: 0.85rem; color: var(--suave); }
-  dd { margin: 0; font-weight: 600; }
-  .ficha h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; }
-  .integrantes {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-    gap: 0.75rem 1.5rem;
-  }
-  .integrantes li { display: flex; flex-direction: column; line-height: 1.4; }
-  .integrantes span { font-size: 0.95rem; color: var(--suave); }
-
-  .indice { list-style: none; padding: 0; margin: 0; }
-  .indice a {
-    display: flex;
-    gap: 1rem;
-    align-items: baseline;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--borde);
-    text-decoration: none;
-    color: var(--texto);
-  }
-  .indice a:hover strong { color: var(--acento); }
-  .indice .letra {
-    font-family: var(--serif);
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--acento);
-    min-width: 1.5rem;
-  }
-  .indice strong { display: block; color: var(--azul); font-size: 1.15rem; }
-  .desc { display: block; color: var(--suave); font-size: 1rem; }
 </style>

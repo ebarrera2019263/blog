@@ -1,0 +1,29 @@
+---
+import { url } from '../lib/url';
+import { slugEtiqueta } from '../lib/posts';
+
+interface Props {
+  etiquetas: string[];
+}
+
+const { etiquetas } = Astro.props;
+---
+
+<ul class="etiquetas" aria-label="Etiquetas">
+  {etiquetas.map((e) => <li><a href={url(`etiquetas/${slugEtiqueta(e)}`)}>#{e}</a></li>)}
+</ul>
+
+<style>
+  .etiquetas { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; }
+  a {
+    font-family: var(--titulos);
+    font-size: var(--paso--1);
+    font-weight: 600;
+    color: var(--rojo-hondo);
+    text-decoration: none;
+  }
+  a:hover { text-decoration: underline; }
+  @media (prefers-color-scheme: dark) {
+    a { color: oklch(0.78 0.11 27); }
+  }
+</style>

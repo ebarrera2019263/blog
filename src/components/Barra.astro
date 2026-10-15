@@ -1,0 +1,125 @@
+---
+// Barra lateral del blog: acerca de, autores, etiquetas y archivo.
+import Avatar from './Avatar.astro';
+import { sitio, autores, integrantes } from '../data/sitio';
+import { url } from '../lib/url';
+import { obtenerPosts, contarEtiquetas } from '../lib/posts';
+
+const posts = await obtenerPosts();
+const etiquetas = contarEtiquetas(posts);
+
+const meses = new Map<string, number>();
+const fmtMes = new Intl.DateTimeFormat('es-GT', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+for (const p of posts) {
+  const m = fmtMes.format(p.data.fecha).replace(/^./, (c) => c.toUpperCase());
+  meses.set(m, (meses.get(m) ?? 0) + 1);
+}
+---
+
+<aside class="barra" aria-label="Información del blog">
+  <section class="acerca">
+    <img src={url('img/logo-umg.png')} alt="" width="64" height="64" />
+    <h2>Sobre este blog</h2>
+    <p>
+      Blog de investigación del curso <strong>{sitio.curso}</strong>, sección {sitio.seccion}, de la {sitio.facultad} de
+      la {sitio.universidad}.
+    </p>
+    <p class="detalle">Catedrático: {sitio.catedratico} · {sitio.ciclo}</p>
+    <a href={url('acerca')}>Acerca del blog y guía de la rúbrica</a>
+  </section>
+
+  <section>
+    <h2>Quiénes escriben</h2>
+    <ul class="autores">
+      {
+        integrantes.map((clave) => {
+          const total = posts.filter((p) => p.data.autor === clave).length;
+          return (
+            <li>
+              <Avatar autor={clave} tam={40} />
+              <span>
+                <a href={url(`autores/${clave}`)}>{autores[clave].nombre}</a>
+                <span class="detalle">
+                  {autores[clave].tema} · {total} {total === 1 ? 'entrada' : 'entradas'}
+                </span>
+              </span>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+
+  <section>
+    <h2>Etiquetas</h2>
+    <ul class="nube">
+      {
+        etiquetas.map((e) => (
+          <li>
+            <a href={url(`etiquetas/${e.slug}`)}>
+              {e.nombre} <span class="cuenta">{e.total}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section>
+    <h2>Archivo</h2>
+    <ul class="archivo">
+      {
+        [...meses].map(([mes, total]) => (
+          <li>
+            <a href={url('#entradas')}>{mes}</a> <span class="cuenta">({total})</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section>
+    <h2>Fuentes</h2>
+    <p class="detalle">Todas las citas siguen el formato APA 7.ª edición.</p>
+    <a href={url('referencias')}>Ver lista de referencias</a>
+  </section>
+</aside>
+
+<style>
+  .barra {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+    font-family: var(--titulos);
+    font-size: var(--paso--1);
+    line-height: 1.5;
+  }
+  section { padding-top: 1rem; border-top: 2px solid var(--tinta); }
+  .acerca { border-top-color: var(--rojo); }
+  h2 { font-size: 1.05rem; margin: 0 0 0.75rem; letter-spacing: 0; }
+  p { margin: 0 0 0.6rem; }
+  .acerca img { width: 64px; height: 64px; margin-bottom: 0.75rem; }
+  .detalle { color: var(--suave); display: block; }
+  a { font-weight: 600; }
+
+  ul { list-style: none; padding: 0; margin: 0; }
+  .autores { display: flex; flex-direction: column; gap: 0.9rem; }
+  .autores li { display: flex; gap: 0.7rem; align-items: center; }
+  .autores li > span { display: flex; flex-direction: column; }
+  .autores a { color: var(--tinta); text-decoration: none; }
+  .autores a:hover { text-decoration: underline; }
+
+  .nube { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .nube a {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    color: var(--tinta);
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
+  }
+  .nube a:hover { border-color: var(--tinta); background: var(--tenue); }
+  .cuenta { color: var(--suave); font-weight: 400; }
+</style>

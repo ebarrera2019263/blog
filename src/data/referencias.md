@@ -1,10 +1,3 @@
----
-titulo: Referencias
-letra: E
-descripcion: Fuentes consultadas, en formato APA 7.ª edición.
-orden: 7
----
-
 Alvarez, F., Argente, D., & Van Patten, D. (2023). Are cryptocurrencies currencies? Bitcoin as legal tender in El Salvador. *Science, 382*(6677). https://doi.org/10.1126/science.add2844
 
 Buterin, V. (2014). *Ethereum: A next-generation smart contract and decentralized application platform* [Libro blanco]. https://ethereum.org/whitepaper

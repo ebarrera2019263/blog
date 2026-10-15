@@ -13,14 +13,16 @@ npm run dev        # http://localhost:4321/blog/
 
 | Qué | Archivo |
 | --- | --- |
-| Universidad, curso, sección, catedrático, tema, integrantes | `src/data/sitio.ts` |
-| Contenido de cada sección (Markdown) | `src/content/secciones/*.md` |
-| Imágenes y fotos | `public/img/` → en Markdown: `![descripción](/blog/img/foto.jpg)` |
-| Video de YouTube | `video:` en el encabezado del `.md` (solo el ID, lo que va después de `v=`) |
-| Presentación (Google Slides o Canva) | `presentacion:` en el encabezado del `.md` (link "Insertar" o "embed") |
+| Nombre del blog, universidad, curso, sección, catedrático | `src/data/sitio.ts` → `sitio` |
+| Integrantes (nombre, carné, tema, biografía) | `src/data/sitio.ts` → `autores` |
+| Entradas del blog (una por archivo, en Markdown) | `src/content/posts/*.md` |
+| Comentarios del grupo de cada entrada | `comentarios:` en el encabezado de cada `.md` |
+| Fotos de portada | `public/img/portadas/` y `portada:` en el encabezado del `.md` |
+| Video de YouTube / presentación de Google Slides | `video:` y `presentacion:` en el encabezado del `.md` |
+| Referencias APA | `src/data/referencias.md` |
 | Colores y tipografía | `src/styles/global.css` |
 
-El orden del menú lo define `orden:` en cada `.md`.
+Para agregar una entrada nueva, copia un `.md` de `src/content/posts/`, cambia el nombre del archivo (será la URL) y edita el encabezado. Las entradas se ordenan por `fecha:`, de la más reciente a la más antigua, y la que tiene `fijada: true` aparece primero.
 
 ## Publicar en GitHub Pages
 

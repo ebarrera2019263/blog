@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" font-family="'Source Sans 3', Helvetica, Arial, sans-serif">
-  <rect width="640" height="360" fill="#e8eef8"/>
-  <rect x="270" y="130" width="100" height="74" rx="10" fill="none" stroke="#5a6478" stroke-width="4"/>
-  <circle cx="320" cy="167" r="20" fill="none" stroke="#5a6478" stroke-width="4"/>
-  <rect x="292" y="120" width="30" height="12" rx="3" fill="#5a6478"/>
-  <text x="320" y="245" font-size="18" fill="#5a6478" text-anchor="middle">Reemplazar con una fotografía del grupo</text>
-  <text x="320" y="270" font-size="14" fill="#5a6478" text-anchor="middle">public/img/foto-ejemplo.jpg</text>
-</svg>

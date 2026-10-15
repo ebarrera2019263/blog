@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import { Content } from '../data/referencias.md';
+---
+
+<Base titulo="Referencias" descripcion="Fuentes consultadas en el blog, en formato APA 7.ª edición.">
+  <header>
+    <h1>Referencias</h1>
+    <p class="entradilla">
+      Todas las fuentes citadas en las entradas del blog, en orden alfabético y con formato APA 7.ª edición. La búsqueda
+      académica se hizo en Google Académico y en sitios oficiales.
+    </p>
+  </header>
+  <div class="prosa apa">
+    <Content />
+  </div>
+</Base>
+
+<style>
+  header { max-width: 68ch; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 2px solid var(--tinta); }
+  h1 { font-size: var(--paso-3); margin: 0 0 0.75rem; letter-spacing: -0.03em; }
+  .entradilla { margin: 0; color: var(--suave); }
+</style>

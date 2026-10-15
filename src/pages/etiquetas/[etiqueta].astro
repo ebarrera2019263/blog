@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import Tarjeta from '../../components/Tarjeta.astro';
+import { obtenerPosts, contarEtiquetas, slugEtiqueta, type Post } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await obtenerPosts();
+  return contarEtiquetas(posts).map((e) => ({
+    params: { etiqueta: e.slug },
+    props: { nombre: e.nombre, posts: posts.filter((p) => p.data.etiquetas.some((t) => slugEtiqueta(t) === e.slug)) },
+  }));
+}
+
+interface Props {
+  nombre: string;
+  posts: Post[];
+}
+
+const { nombre, posts } = Astro.props;
+---
+
+<Base titulo={`#${nombre}`} descripcion={`Entradas con la etiqueta ${nombre}.`}>
+  <h1>#{nombre}</h1>
+  <p class="cuenta">{posts.length} {posts.length === 1 ? 'entrada' : 'entradas'} con esta etiqueta</p>
+  {posts.map((p) => <Tarjeta post={p} />)}
+</Base>
+
+<style>
+  h1 { font-size: var(--paso-3); margin: 0; letter-spacing: -0.03em; color: var(--rojo-hondo); }
+  .cuenta { font-family: var(--titulos); color: var(--suave); margin: 0.4rem 0 1rem; padding-bottom: 1rem; border-bottom: 2px solid var(--tinta); }
+  @media (prefers-color-scheme: dark) { h1 { color: oklch(0.78 0.11 27); } }
+</style>
